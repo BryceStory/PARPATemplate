@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1209,1581</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1206,1716</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>GetAllSettings_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -76,9 +76,11 @@
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
       <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Initialize All Settings" sap:VirtualizedContainerService.HintSize="638,1516" sap2010:WorkflowViewState.IdRef="Sequence_2">
+  <Sequence sap2010:Annotation.AnnotationText="" DisplayName="Initialize All Settings" sap:VirtualizedContainerService.HintSize="638,1651" sap2010:WorkflowViewState.IdRef="Sequence_2">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -102,6 +104,7 @@
         <InArgument x:TypeArguments="x:String">[Directory.GetCurrentDirectory()+"\"]</InArgument>
       </Assign.Value>
     </Assign>
+    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="596,95" sap2010:WorkflowViewState.IdRef="LogMessage_9" Level="Info" Message="[&quot;程序根目录out_Config(&quot;&quot;RootPath&quot;&quot;)：&quot;+out_Config(&quot;RootPath&quot;).ToString+&quot;Data\&quot;]" />
     <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="596,95" sap2010:WorkflowViewState.IdRef="LogMessage_7" Level="Info" Message="[&quot;初始化文件所在路径：&quot;+out_Config(&quot;RootPath&quot;).ToString+&quot;Data\&quot;]" />
     <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For each configuration sheet" sap:VirtualizedContainerService.HintSize="596,786" sap2010:WorkflowViewState.IdRef="ForEach`1_3" Values="[in_ConfigSheets]">
       <ui:ForEach.Body>
