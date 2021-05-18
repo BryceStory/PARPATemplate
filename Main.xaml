@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1486,1220" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1209,1186" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="34">
       <x:String>System.Activities</x:String>
@@ -67,10 +67,9 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>Newtonsoft.Json</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Flowchart sap2010:Annotation.AnnotationText="流程名称：xxxx项目&#xA;开发者：xxxx团队-Bryce&#xA;版本：V2021.1.0&#xA;日期：2021年5月10日&#xA;&#xA;截图插件自己需要写一个&#xA;添加列插件&#xA;" DisplayName="Main-Flowchart" sap:VirtualizedContainerService.HintSize="1077,1155" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+  <Flowchart sap2010:Annotation.AnnotationText="流程名称：xxxx项目&#xA;开发者：xxxx团队-Bryce&#xA;版本：V2021.1.0&#xA;日期：2021年5月10日&#xD;&#xA;&#xA;添加列插件" DisplayName="Main-Flowchart" sap:VirtualizedContainerService.HintSize="1077,1121" sap2010:WorkflowViewState.IdRef="Flowchart_1">
     <Flowchart.Variables>
       <Variable x:TypeArguments="x:String" Name="ProcessResult" />
       <Variable x:TypeArguments="s:String[]" Name="ArrayKillProcessName" />
@@ -81,11 +80,7 @@
       <Variable x:TypeArguments="s:String[]" Name="ProcessType" />
       <Variable x:TypeArguments="x:Int32" Name="ProcessCount" />
       <Variable x:TypeArguments="s:InvalidOperationException" Name="BizRuleException" />
-      <Variable x:TypeArguments="x:Int32" Name="TransactionNumber">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" Value="1" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" Default="1" Name="TransactionNumber" />
       <Variable x:TypeArguments="sd:DataTable" Name="TransactionData" />
       <Variable x:TypeArguments="sd:DataRow" Name="TransactionItem" />
       <Variable x:TypeArguments="x:Int32" Name="RetryNumber" />
@@ -403,10 +398,7 @@
                     </TryCatch>
                   </Sequence>
                   <FlowStep.Next>
-                    <FlowDecision x:Name="__ReferenceID5" DisplayName="流程决策" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
-                      <FlowDecision.Condition>
-                        <mva:VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="TransactionItem IsNot Nothing" />
-                      </FlowDecision.Condition>
+                    <FlowDecision x:Name="__ReferenceID5" Condition="[TransactionItem IsNot Nothing]" DisplayName="流程决策" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -539,27 +531,13 @@
                               <TryCatch.Finally>
                                 <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="调用工作流文件" sap:VirtualizedContainerService.HintSize="334,114" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_8" LogEntry="No" LogExit="No" UnSafe="False" WorkflowFileName="Framework\SetTransactionStatus.xaml">
                                   <ui:InvokeWorkflowFile.Arguments>
-                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                      <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="DicConfig" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemError">
-                                      <mva:VisualBasicValue x:TypeArguments="s:Exception" ExpressionText="SystemException" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="s:InvalidOperationException" x:Key="in_BizRulrError">
-                                      <mva:VisualBasicValue x:TypeArguments="s:InvalidOperationException" ExpressionText="BizRuleException" />
-                                    </InArgument>
-                                    <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">
-                                      <mva:VisualBasicValue x:TypeArguments="sd:DataRow" ExpressionText="TransactionItem" />
-                                    </InArgument>
-                                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TransactionData">
-                                      <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="TransactionData" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber">
-                                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="TransactionNumber" />
-                                    </InOutArgument>
-                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_RetryNumber">
-                                      <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="RetryNumber" />
-                                    </InOutArgument>
+                                    <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[DicConfig]</InArgument>
+                                    <InArgument x:TypeArguments="s:Exception" x:Key="in_SystemError">[SystemException]</InArgument>
+                                    <InArgument x:TypeArguments="s:InvalidOperationException" x:Key="in_BizRulrError">[BizRuleException]</InArgument>
+                                    <InArgument x:TypeArguments="sd:DataRow" x:Key="in_TransactionItem">[TransactionItem]</InArgument>
+                                    <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_TransactionData">[TransactionData]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_TransactionNumber">[TransactionNumber]</InOutArgument>
+                                    <InOutArgument x:TypeArguments="x:Int32" x:Key="io_RetryNumber">[RetryNumber]</InOutArgument>
                                   </ui:InvokeWorkflowFile.Arguments>
                                 </ui:InvokeWorkflowFile>
                               </TryCatch.Finally>
@@ -592,7 +570,7 @@
                               <av:PointCollection x:Key="ConnectorLocation">860,605 860,686.5</av:PointCollection>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                          <Sequence DisplayName="结束" sap:VirtualizedContainerService.HintSize="592,1621" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                          <Sequence DisplayName="结束" sap:VirtualizedContainerService.HintSize="200,70" sap2010:WorkflowViewState.IdRef="Sequence_3">
                             <Sequence.Variables>
                               <Variable x:TypeArguments="sd:DataRow" Name="dr" />
                               <Variable x:TypeArguments="x:String" Name="prefix" />

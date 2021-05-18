@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="TakeScreenshot" this:TakeScreenshot.in_StartRegion="0,0" this:TakeScreenshot.in_EndRegion="1900,1024" this:TakeScreenshot.in_ScreenshotPath="..\ExceptionsScreenshots\" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="TakeScreenshot" this:TakeScreenshot.in_StartRegion="0,0" this:TakeScreenshot.in_EndRegion="1900,1024" this:TakeScreenshot.in_ScreenshotPath="..\ExceptionsScreenshots\" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:this="clr-namespace:" xmlns:uaa="clr-namespace:UiPath.ActivityExtend.Activities;assembly=UiPath.ActivityExtend" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="in_StartRegion" Type="InArgument(x:String)" />
     <x:Property Name="in_EndRegion" Type="InArgument(x:String)" />
@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1206,825</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1209,569</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>TakeScreenshot_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -33,6 +33,8 @@
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
       <x:String>CustomScreenshot</x:String>
+      <x:String>UiPath.ActivityExtend.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -64,10 +66,11 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>CustomScreenshot</AssemblyReference>
+      <AssemblyReference>UiPath.ActivityExtend</AssemblyReference>
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="TakeScreenshot" sap:VirtualizedContainerService.HintSize="376,381" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="TakeScreenshot" sap:VirtualizedContainerService.HintSize="376,484" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strFileName" />
     </Sequence.Variables>
@@ -92,6 +95,7 @@
         <InArgument x:TypeArguments="x:String">[Date.Now.ToString("yyyyMMdd-HHmmss")+".png"]</InArgument>
       </Assign.Value>
     </Assign>
+    <uaa:ActivityScreenshot DisplayName="屏幕截图" EndPosition="[in_EndRegion]" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="ActivityScreenshot_1" SavaPath="[in_ScreenshotPath+strFileName]" StartPosition="[in_StartRegion]" />
     <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;截图保存文件名为：&quot;+strFileName+&quot;,保存路径为：&quot;+in_ScreenshotPath]" />
   </Sequence>
 </Activity>

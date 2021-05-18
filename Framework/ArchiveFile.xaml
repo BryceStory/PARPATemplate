@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="ArchiveFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="ArchiveFile" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib" xmlns:uaa="clr-namespace:UiPath.ActivityExtend.Activities;assembly=UiPath.ActivityExtend" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="io_Config" Type="InOutArgument(scg:Dictionary(x:String, x:Object))" />
     <x:Property Name="in_DestPath" Type="InArgument(x:String)" />
@@ -6,7 +6,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>1207,1676</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>1209,1576</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ArchiveFile_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -34,6 +34,7 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.ActivityExtend.Activities</x:String>
     </sco:Collection>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -65,10 +66,10 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
       <AssemblyReference>UiPath.OCR.Activities.Design</AssemblyReference>
       <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+      <AssemblyReference>UiPath.ActivityExtend</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ArchiveFile" sap:VirtualizedContainerService.HintSize="876,1611" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="ArchiveFile" sap:VirtualizedContainerService.HintSize="876,1511" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Name="strDestFolder" />
       <Variable x:TypeArguments="x:String" Name="strCurrentPath" />
@@ -152,8 +153,8 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
     <ui:CreateDirectory ContinueOnError="True" DisplayName="创建文件夹" sap:VirtualizedContainerService.HintSize="834,81" sap2010:WorkflowViewState.IdRef="CreateDirectory_2" Path="[strDestPath]" />
-    <ui:CopyFile ContinueOnError="True" Destination="[strDestPath]" DisplayName="复制文件" sap:VirtualizedContainerService.HintSize="613,163" sap2010:WorkflowViewState.IdRef="CopyFile_1" Overwrite="False" Path="..\Data" />
-    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="613,53" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;结束进行Data文件夹下配置数据归档&quot;]">
+    <uaa:ActivityFolderCopy DeleteSource="{x:Null}" DisplayName="复制文件夹" sap:VirtualizedContainerService.HintSize="834,63" sap2010:WorkflowViewState.IdRef="ActivityFolderCopy_1" SavePath="[strDestPath]" SourcePath="..\Data" />
+    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="834,53" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;结束进行Data文件夹下配置数据归档&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -161,7 +162,7 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:LogMessage>
-    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="613,53" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;**********************流程全部结束*************************&quot;]">
+    <ui:LogMessage DisplayName="日志消息" sap:VirtualizedContainerService.HintSize="834,53" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;**********************流程全部结束*************************&quot;]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>

@@ -4,6 +4,7 @@
   "main": "Main.xaml",
   "dependencies": {
     "System.Net.Http": "[4.3.4]",
+    "UiPath.ActivityExtend": "[1.0.1]",
     "UiPath.Excel.Activities": "[2.10.4]",
     "UiPath.Mail.Activities": "[1.10.4]",
     "UiPath.System.Activities": "[21.4.0]",
